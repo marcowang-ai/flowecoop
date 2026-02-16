@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flowe Collective | Houston's New Salon Co-Op</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terra-cotta: #C4785B;
+    --terra-dark: #A8613F;
+    --sage: #8A9A7B;
+    --sage-light: #B5C4A8;
+    --cream: #FAF6F1;
+    --cream-dark: #F0E8DF;
+    --white: #FFFFFF;
+    --charcoal: #2C2C2C;
+    --charcoal-light: #4A4A4A;
+    --sand: #E8DDD1;
+    --blush: #E8C4B8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 24px;
+    position: relative;
+    background: linear-gradient(175deg, var(--cream) 0%, var(--cream-dark) 40%, var(--sand) 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,120,91,0.12) 0%, transparent 70%);
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(138,154,123,0.12) 0%, transparent 70%);
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    border: 1px solid var(--terra-cotta);
+    border-radius: 50px;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terra-cotta);
+    margin-bottom: 32px;
+    font-weight: 500;
+    animation: fadeUp 0.8s ease-out 0.2s both;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 10vw, 96px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+    animation: fadeUp 0.8s ease-out 0.4s both;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terra-cotta);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 26px);
+    font-weight: 300;
+    color: var(--charcoal-light);
+    margin-top: 12px;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+    animation: fadeUp 0.8s ease-out 0.6s both;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--terra-cotta);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.4s ease;
+    animation: fadeUp 0.8s ease-out 0.8s both;
+  }
+
+  .hero-cta:hover {
+    background: var(--terra-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196,120,91,0.3);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--charcoal-light);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s ease-out 1s both;
+  }
+
+  .scroll-hint .line {
+    width: 1px;
+    height: 40px;
+    background: var(--terra-cotta);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 100px 24px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terra-cotta);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 24px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--terra-cotta);
+  }
+
+  .section-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--charcoal-light);
+    font-weight: 300;
+    max-width: 600px;
+  }
+
+  /* ===== PROBLEM SECTION ===== */
+  .problem {
+    background: var(--white);
+  }
+
+  .pain-points {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .pain-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px 32px;
+    background: var(--cream);
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .pain-point:hover {
+    transform: translateX(8px);
+  }
+
+  .pain-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+
+  .pain-point h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .pain-point p {
+    font-size: 14px;
+    color: var(--charcoal-light);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  /* ===== SOLUTION / CO-OP MODEL ===== */
+  .solution {
+    background: var(--cream);
+    position: relative;
+  }
+
+  .model-card {
+    margin-top: 48px;
+    background: var(--white);
+    border-radius: 24px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.04);
+  }
+
+  .model-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--terra-cotta), var(--sage), var(--blush));
+  }
+
+  .model-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 32px;
+  }
+
+  .model-col h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    color: var(--charcoal);
+  }
+
+  .model-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .model-col li {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--charcoal-light);
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .model-col li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .booth-col li::before { background: var(--sage); }
+  .commission-col li::before { background: var(--terra-cotta); }
+
+  .model-divider {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .model-divider p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--terra-cotta);
+  }
+
+  .model-divider span {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    color: var(--charcoal-light);
+    font-weight: 300;
+  }
+
+  /* ===== BENEFITS ===== */
+  .benefits {
+    background: var(--charcoal);
+    color: var(--cream);
+  }
+
+  .benefits .section-label { color: var(--blush); }
+  .benefits .section-title { color: var(--cream); }
+  .benefits .section-title em { color: var(--blush); }
+
+  .benefit-grid {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .benefit-card {
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    transition: all 0.4s ease;
+  }
+
+  .benefit-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(196,120,91,0.3);
+    transform: translateY(-4px);
+  }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(196,120,91,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+
+  .benefit-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+
+  .benefit-card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(250,246,241,0.6);
+    font-weight: 300;
+  }
+
+  /* ===== IS THIS YOU ===== */
+  .fit {
+    background: var(--white);
+  }
+
+  .fit-list {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .fit-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: 12px;
+    background: var(--cream);
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--charcoal);
+    transition: all 0.3s ease;
+  }
+
+  .fit-item:hover {
+    background: var(--sand);
+  }
+
+  .fit-check {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .not-fit {
+    margin-top: 40px;
+  }
+
+  .not-fit h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--charcoal-light);
+    margin-bottom: 16px;
+  }
+
+  .not-fit-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--charcoal-light);
+  }
+
+  .not-fit-x {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--charcoal-light);
+    font-size: 12px;
+  }
+
+  /* ===== APPLICATION FORM ===== */
+  .apply {
+    background: linear-gradient(175deg, var(--cream) 0%, var(--sand) 100%);
+    padding: 100px 24px 120px;
+  }
+
+  .apply .container {
+    max-width: 640px;
+  }
+
+  .apply .section-title {
+    text-align: center;
+  }
+
+  .apply .section-label {
+    text-align: center;
+  }
+
+  .apply-subtext {
+    text-align: center;
+    font-size: 15px;
+    color: var(--charcoal-light);
+    font-weight: 300;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+
+  .form-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow: 0 8px 60px rgba(0,0,0,0.06);
+  }
+
+  .form-group {
+    margin-bottom: 24px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 20px;
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--charcoal);
+    background: var(--cream);
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--terra-cotta);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(196,120,91,0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--terra-cotta);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 16px;
+  }
+
+  .submit-btn:hover {
+    background: var(--terra-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(196,120,91,0.3);
+  }
+
+  .form-note {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--charcoal-light);
+    font-weight: 300;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--charcoal);
+    color: var(--cream);
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  footer .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+  footer .location {
+    font-size: 13px;
+    color: rgba(250,246,241,0.5);
+    font-weight: 300;
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  footer .divider-line {
+    width: 40px;
+    height: 1px;
+    background: var(--terra-cotta);
+    margin: 24px auto;
+  }
+
+  footer .copyright {
+    font-size: 12px;
+    color: rgba(250,246,241,0.3);
+    font-weight: 300;
+  }
+
+  /* ===== SCROLL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    section { padding: 72px 20px; }
+    .model-grid { grid-template-columns: 1fr; gap: 32px; }
+    .benefit-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .form-card { padding: 32px 24px; }
+    .model-card { padding: 32px 24px; }
+    .pain-point { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Now Accepting Applications · Houston, TX</div>
+  <h1>Flowe<br><em>Collective</em></h1>
+  <p class="hero-sub">The salon co-op built for stylists ready to bloom.</p>
+  <a href="#apply" class="hero-cta">Apply Now</a>
+  <div class="scroll-hint">
+    <span>Discover</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Sound Familiar?</p>
+      <h2 class="section-title">You're busy. You're <em>thriving.</em><br>But you're also… exhausted.</h2>
+      <p class="section-text">You're pulling in $8 to 13K a month. Your books are solid. But between managing your own marketing, dealing with products, handling your own scheduling, and having zero support, it's starting to feel like you're running a business you never signed up for.</p>
+    </div>
+    <div class="pain-points reveal">
+      <div class="pain-point">
+        <div class="pain-icon">🧹</div>
+        <div>
+          <h4>You're cleaning up after yourself. All of it.</h4>
+          <p>Sweeping hair, wiping stations, restocking supplies, taking out trash, doing laundry. The behind-the-scenes work never stops.</p>
+        </div>
+      </div>
+      <div class="pain-point">
+        <div class="pain-icon">📦</div>
+        <div>
+          <h4>Product ordering is on you</h4>
+          <p>Tracking inventory, placing orders, fronting costs, it all adds up in time and money.</p>
+        </div>
+      </div>
+      <div class="pain-point">
+        <div class="pain-icon">📞</div>
+        <div>
+          <h4>No front desk, no backup</h4>
+          <p>You're answering calls between foils, confirming appointments at 10pm, and rescheduling on your own.</p>
+        </div>
+      </div>
+      <div class="pain-point">
+        <div class="pain-icon">🧍</div>
+        <div>
+          <h4>Booth rent independence feels… isolating</h4>
+          <p>You wanted freedom, but you didn't expect it to come with doing everything alone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">A New Model</p>
+      <h2 class="section-title">The best of <em>both worlds.</em></h2>
+      <p class="section-text">Flowe Collective is Houston's first salon co-op. A new model that gives you the autonomy of booth rent with the support system of commission. We built this for stylists like you.</p>
+    </div>
+    <div class="model-card reveal">
+      <div class="model-grid">
+        <div class="model-col booth-col">
+          <h4>Booth Rent Perks</h4>
+          <ul>
+            <li>Set your own schedule</li>
+            <li>Choose your own prices</li>
+            <li>Build your brand, your way</li>
+            <li>Keep your autonomy</li>
+          </ul>
+        </div>
+        <div class="model-col commission-col">
+          <h4>Commission Perks</h4>
+          <ul>
+            <li>Front desk & reception team</li>
+            <li>All cleanup and maintenance handled</li>
+            <li>Product provided at a discount</li>
+            <li>A team that has your back</li>
+          </ul>
+        </div>
+      </div>
+      <div class="model-divider">
+        <p>Why choose when you can have both?</p>
+        <span>That's the Flowe Collective co-op model.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">What You Get</p>
+      <h2 class="section-title">Support that lets you<br>focus on your <em>craft.</em></h2>
+    </div>
+    <div class="benefit-grid reveal">
+      <div class="benefit-card">
+        <div class="benefit-icon">🗓</div>
+        <h4>Front Desk Support</h4>
+        <p>A dedicated reception team handles calls, bookings, check-ins, and rescheduling so you never have to pause mid-service again.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🧹</div>
+        <h4>We Handle the Cleanup</h4>
+        <p>No more sweeping between clients, restocking your own supplies, or staying late to clean up. We take care of all of it so you can walk out when your last client leaves.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🧴</div>
+        <h4>Product Provided</h4>
+        <p>Access professional product at a discount without the hassle of ordering, stocking, or fronting the cost yourself.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏰</div>
+        <h4>Flexible Scheduling</h4>
+        <p>Your time is yours. Build the schedule that works for your life, not someone else's vision of productivity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IS THIS YOU -->
+<section class="fit">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Is This You?</p>
+      <h2 class="section-title">Flowe Collective is for stylists who<em>…</em></h2>
+    </div>
+    <div class="fit-list reveal">
+      <div class="fit-item">
+        <div class="fit-check">✓</div>
+        Are currently bringing in $8K to $13K/month and have room to grow
+      </div>
+      <div class="fit-item">
+        <div class="fit-check">✓</div>
+        Are tired of wearing every hat: marketer, receptionist, inventory manager
+      </div>
+      <div class="fit-item">
+        <div class="fit-check">✓</div>
+        Want the freedom of booth rent without the isolation
+      </div>
+      <div class="fit-item">
+        <div class="fit-check">✓</div>
+        Are looking for community, collaboration, and support
+      </div>
+      <div class="fit-item">
+        <div class="fit-check">✓</div>
+        Want to focus on what they love: being behind the chair
+      </div>
+    </div>
+    <div class="not-fit reveal">
+      <h4>This probably isn't for you if…</h4>
+      <div class="not-fit-item">
+        <div class="not-fit-x">✕</div>
+        You prefer working completely solo with zero collaboration
+      </div>
+      <div class="not-fit-item">
+        <div class="not-fit-x">✕</div>
+        You're just starting out and still building a clientele
+      </div>
+      <div class="not-fit-item">
+        <div class="not-fit-x">✕</div>
+        You're not open to being part of a collective vision
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="apply" id="apply">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">Join the Collective</p>
+      <h2 class="section-title">Ready to <em>bloom?</em></h2>
+      <p class="apply-subtext">
+        Fill out the application below and we'll be in touch within 48 hours to set up a tour and conversation.
+      </p>
+    </div>
+
+    <form class="form-card reveal"
+          action="https://formspree.io/f/mwvnbqvw"
+          method="POST">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" name="first_name" placeholder="Jane" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" name="last_name" placeholder="Doe" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="jane@email.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="(713) 555-0123">
+      </div>
+
+      <div class="form-group">
+        <label>Instagram Handle</label>
+        <input type="text" name="instagram" placeholder="@yourhandle" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Years Behind the Chair</label>
+          <select name="years_behind_chair" required>
+            <option value="" disabled selected>Select</option>
+            <option>1 to 3 years</option>
+            <option>3 to 5 years</option>
+            <option>5 to 10 years</option>
+            <option>10+ years</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Avg Monthly Revenue</label>
+          <select name="avg_monthly_revenue" required>
+            <option value="" disabled selected>Select</option>
+            <option>Under $5K</option>
+            <option>$5K to $8K</option>
+            <option>$8K to $10K</option>
+            <option>$10K to $13K</option>
+            <option>$13K+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Current Situation</label>
+        <select name="current_situation" required>
+          <option value="" disabled selected>Select</option>
+          <option>Booth Renter</option>
+          <option>Commission Stylist</option>
+          <option>Suite Renter</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>What excites you most about the co-op model?</label>
+        <textarea name="why_coop"
+                  placeholder="Tell us a little about what you're looking for…"
+                  required></textarea>
+      </div>
+
+      <!-- Optional: prevent spam -->
+      <input type="hidden" name="_subject" value="New Flowe Co-Op Application">
+      <input type="hidden" name="_captcha" value="false">
+
+      <button class="submit-btn" type="submit">
+        Submit Application
+      </button>
+
+      <p class="form-note">
+        We review every application personally. Expect to hear from us within 48 hours.
+      </p>
+    </form>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">Flowe Collective</div>
+  <div class="location">1207 W 34th St, #400 · Houston, TX 77018</div>
+  <div class="divider-line"></div>
+  <div class="copyright">© 2026 Flowe Collective. All rights reserved.</div>
+</footer>
+
+<script>
+  // Scroll reveal animation
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

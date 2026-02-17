@@ -922,9 +922,14 @@
                   required></textarea>
       </div>
 
-      <!-- Optional: prevent spam -->
+      <!-- Spam prevention -->
       <input type="hidden" name="_subject" value="New Flowe Co-Op Application">
-      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Honeypot: invisible to humans, catches bots -->
+      <div style="position:absolute;left:-9999px;top:-9999px;">
+        <label>Leave blank</label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
 
       <button class="submit-btn" type="submit">
         Submit Application
